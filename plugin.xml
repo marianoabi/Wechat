@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.vei.wechat" version="0.0.1" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>WechatVEI</name>
+
+    <preference name="WECHATAPPID" value="wechatVEI" />
+
+
+    <js-module name="WechatVEI" src="www/WechatVEI.js">
+        <clobbers target="cordova.plugins.WechatVEI" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="WechatVEI">
+                <param name="android-package" value="com.vei.wechat.WechatVEI" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/WechatVEI.java" target-dir="src/com/vei/wechat/WechatVEI" />
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="WechatVEI">
+                <param name="ios-package" value="WechatVEI" />
+            </feature>
+            <preference name="WECHATAPPID" value="$WECHATAPPID"/>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>weixin</string>
+                <string>wechat</string>
+            </array>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+        </config-file>
+
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>CFBundleURLName</key>
+                    <string>weixin</string>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>$WECHATAPPID</string>
+                    </array>
+                </dict>
+            </array>
+        </config-file>
+
+        <source-file src="src/ios/WechatVEI.m" />
+
+        <!-- Wechat Official -->
+        <header-file src="src/ios/libs/WeChatSDK1.8.6.1/WXApi.h" />
+        <header-file src="src/ios/libs/WeChatSDK1.8.6.1/WXApiObject.h" />
+        <source-file src="src/ios/libs/WeChatSDK1.8.6.1/libWeChatSDK.a" framework="true" />
+
+        <!-- Other required frameworks -->
+        <framework src="libz.tbd" />
+        <framework src="libsqlite3.0.tbd" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="SystemConfiguration.framework" />
+        <framework src="Security.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="libc++.1.tbd" />
+    </platform>
+</plugin>

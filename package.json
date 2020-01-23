@@ -1,0 +1,19 @@
+{
+  "name": "com.vei.wechat",
+  "version": "0.0.1",
+  "description": "A cordova plugin, JS version of Wechat SDK.",
+  "cordova": {
+    "id": "com.vei.wechat",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Abigail A Mariano",
+  "license": "ISC"
+}
