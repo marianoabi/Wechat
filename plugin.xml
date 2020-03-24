@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.vei.wechat" version="0.0.1" 
+<plugin id="cordova-plugin-vei-wechat-pay" version="0.0.1" 
     xmlns="http://apache.org/cordova/ns/plugins/1.0" 
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>WechatVEI</name>
@@ -16,8 +16,18 @@
                 <param name="android-package" value="com.vei.wechat.WechatVEI" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml" />
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
         <source-file src="src/android/WechatVEI.java" target-dir="src/com/vei/wechat/WechatVEI" />
+
+        <!-- Wechat Official -->
+        <framework src="android-build.gradle" custom="true" type="gradleReference" />
+
     </platform>
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
@@ -31,6 +41,7 @@
             <array>
                 <string>weixin</string>
                 <string>wechat</string>
+                <string>weixinULAPI</string>
             </array>
         </config-file>
 

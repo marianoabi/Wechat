@@ -1,9 +1,9 @@
 {
-  "name": "com.vei.wechat",
+  "name": "cordova-plugin-vei-wechat-pay",
   "version": "0.0.1",
   "description": "A cordova plugin, JS version of Wechat SDK.",
   "cordova": {
-    "id": "com.vei.wechat",
+    "id": "cordova-plugin-vei-wechat-pay",
     "platforms": [
       "android",
       "ios"
